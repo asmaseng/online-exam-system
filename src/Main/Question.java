@@ -31,19 +31,19 @@ public class Question {
     void setScoreValue(int scoreValue) {
         this.scoreValue = scoreValue;
     }
-    public int getNumber() {
+    int getNumber() {
         return number;
     }
     public void setNumber(int number) {
         this.number = number;
     }
-    public String getQuestionText() {
+    String getQuestionText() {
         return questionText;
     }
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
-    public String getRightAnswer() {
+    String getRightAnswer() {
         return rightAnswer;
     }
     public void setRightAnswer(String rightAnswer) {

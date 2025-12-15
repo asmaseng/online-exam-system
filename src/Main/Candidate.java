@@ -25,13 +25,13 @@ public class Candidate {
     void setTotalScore(int totalScore) {
         this.totalScore = totalScore;
     }
-    public int getId() {
+    int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public String getFullName() {
+    String getFullName() {
         return fullName;
     }
     public void setFullName(String fullName) {

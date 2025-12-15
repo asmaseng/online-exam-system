@@ -26,7 +26,7 @@ public class Exam {
     void setMinimumScore(int minimumScore) {
         this.minimumScore = minimumScore;
     }
-    public String getExamName() {
+    String getExamName() {
         return examName;
     }
     public void setExamName(String examName) {
