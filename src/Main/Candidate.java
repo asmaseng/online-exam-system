@@ -8,9 +8,9 @@ public class Candidate {
     Candidate() {
 
     }
-    Candidate(int id, String fullname) {
+    Candidate(int id, String fullName) {
         this.id = id;
-        this.fullName = fullname;
+        this.fullName = fullName;
         this.totalScore = 0;
     }
 

@@ -10,7 +10,7 @@ public class Question {
 
     }
 
-    Question(int number, String questionText, String rightAnswer, int scorevalue) {
+    Question(int number, String questionText, String rightAnswer, int scoreValue) {
         this.number = number;
         this.questionText = questionText;
         this.rightAnswer = rightAnswer;
