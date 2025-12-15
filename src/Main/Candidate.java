@@ -17,4 +17,24 @@ public class Candidate {
     void addPoints(int value) {
         totalScore += value;
     }
+
+    int getTotalScore() {
+        return totalScore;
+    }
+
+    void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getFullName() {
+        return fullName;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 }

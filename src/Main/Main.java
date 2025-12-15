@@ -11,26 +11,26 @@ public class Main {
         Exam midterm = new Exam("Midterm Test", 3);
 
         if (q1.isCorrect("8")) {
-            S1.addPoints(q1.scoreValue);
+            S1.addPoints(q1.getScoreValue());
         }
         if (q2.isCorrect("yes")) {
-            S1.addPoints(q2.scoreValue);
+            S1.addPoints(q2.getScoreValue());
         }
         if (q1.isCorrect("7")) {
-            S2.addPoints(q1.scoreValue);
+            S2.addPoints(q1.getScoreValue());
         }
 
-        System.out.println(S1.fullName + " score: " + S1.totalScore);
-        System.out.println(S2.fullName + " score: " + S2.totalScore);
+        System.out.println(S1.fullName + " score: " + S1.getTotalScore());
+        System.out.println(S2.fullName + " score: " + S2.getTotalScore());
 
-        if (midterm.checkResult(S1.totalScore)) {
+        if (midterm.checkResult(S1.getTotalScore())) {
             System.out.println(S1.fullName + " passed the exam");
         }
         else {
             System.out.println(S1.fullName + " failed the exam");
         }
 
-        if (midterm.checkResult(S2.totalScore)) {
+        if (midterm.checkResult(S2.getTotalScore())) {
             System.out.println(S2.fullName + " passed the exam");
         } else {
             System.out.println(S2.fullName + " failed the exam");
