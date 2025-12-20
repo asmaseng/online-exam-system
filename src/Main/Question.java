@@ -43,12 +43,6 @@ public class Question {
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
-    String getRightAnswer() {
-        return rightAnswer;
-    }
-    public void setRightAnswer(String rightAnswer) {
-        this.rightAnswer = rightAnswer;
-    }
     public boolean isCorrect() {
         return isCorrect(this.rightAnswer);
     }

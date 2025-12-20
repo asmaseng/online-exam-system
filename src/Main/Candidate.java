@@ -5,9 +5,6 @@ public class Candidate {
     String fullName;
     int totalScore;
 
-    Candidate() {
-
-    }
     Candidate(int id, String fullName) {
         this.id = id;
         this.fullName = fullName;
