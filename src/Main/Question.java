@@ -1,54 +1,51 @@
 package Main;
 
+import java.util.Objects;
+
 public class Question {
-    int number;
-    String questionText;
-    String rightAnswer;
-    int scoreValue;
+    private int id;
+    private String text;
+    private String correctAnswer;
+    private int scoreValue;
 
-    Question() {
-
-    }
-
-    Question(int number, String questionText, String rightAnswer, int scoreValue) {
-        this.number = number;
-        this.questionText = questionText;
-        this.rightAnswer = rightAnswer;
+    public Question(int id, String text, String correctAnswer, int scoreValue) {
+        this.id = id;
+        this.text = text;
+        this.correctAnswer = correctAnswer;
         this.scoreValue = scoreValue;
     }
 
-    boolean isCorrect(String userAnswer) {
-        if (userAnswer.equals(rightAnswer)) {
-            return true;
-        }
-        return false;
+    public String getText() {
+        return text;
     }
 
-    int getScoreValue() {
+    public int getScoreValue() {
         return scoreValue;
     }
 
-    void setScoreValue(int scoreValue) {
-        this.scoreValue = scoreValue;
+    public boolean isCorrect(String answer) {
+        return correctAnswer.equalsIgnoreCase(answer);
     }
-    int getNumber() {
-        return number;
-    }
-    public void setNumber(int number) {
-        this.number = number;
-    }
-    String getQuestionText() {
-        return questionText;
-    }
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
-    public boolean isCorrect() {
-        return isCorrect(this.rightAnswer);
-    }
-    public void setCorrect(boolean correct) {
-        if (correct) {
 
-        }
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", score=" + scoreValue +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Question)) return false;
+        Question question = (Question) o;
+        return id == question.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
