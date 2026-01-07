@@ -1,23 +1,15 @@
 package Main;
 
 public class Exam {
-    private String examName;
-    private int minimumScore;
+    private String name;
+    private int minScore;
 
-    public Exam(String examName, int minimumScore) {
-        this.examName = examName;
-        this.minimumScore = minimumScore;
+    public Exam(String name, int minScore) {
+        this.name = name;
+        this.minScore = minScore;
     }
 
     public boolean checkResult(int score) {
-        return score >= minimumScore;
-    }
-
-    @Override
-    public String toString() {
-        return "Exam{" +
-                "name='" + examName + '\'' +
-                ", minScore=" + minimumScore +
-                '}';
+        return score >= minScore;
     }
 }

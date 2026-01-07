@@ -2,11 +2,11 @@ package Main;
 
 import java.util.Objects;
 
-public class Question {
-    private int id;
-    private String text;
-    private String correctAnswer;
-    private int scoreValue;
+public abstract class Question {
+    protected int id;
+    protected String text;
+    protected String correctAnswer;
+    protected int scoreValue;
 
     public Question(int id, String text, String correctAnswer, int scoreValue) {
         this.id = id;
@@ -23,25 +23,19 @@ public class Question {
         return scoreValue;
     }
 
-    public boolean isCorrect(String answer) {
-        return correctAnswer.equalsIgnoreCase(answer);
-    }
+    public abstract boolean isCorrect(String answer);
 
     @Override
     public String toString() {
-        return "Question{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", score=" + scoreValue +
-                '}';
+        return "Question{id=" + id + ", score=" + scoreValue + "}";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Question)) return false;
-        Question question = (Question) o;
-        return id == question.id;
+        Question q = (Question) o;
+        return id == q.id;
     }
 
     @Override

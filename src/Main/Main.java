@@ -1,6 +1,6 @@
 package Main;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -8,52 +8,67 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Question q1 = new Question(1, "5 + 3 = ?", "8", 3);
-        Question q2 = new Question(2, "Java is a programming language? (yes/no)", "yes", 2);
+        ArrayList<Question> questions = new ArrayList<>();
+        questions.add(new TextQuestion(1, "5 + 3 = ?", "8", 3));
+        questions.add(new TextQuestion(2, "Java is OOP language? (yes/no)", "yes", 2));
+        questions.add(new TextQuestion(3, "2 * 2 = ?", "4", 1));
 
-        Question[] questions = { q1, q2 };
+        questions.sort(Comparator.comparingInt(Question::getScoreValue));
 
-        Candidate S1 = new Candidate(1, "Asanali");
-        Candidate S2 = new Candidate(2, "Farabi");
+        System.out.println("\nFiltered questions (score >= 2):");
+        for (Question q : questions) {
+            if (q.getScoreValue() >= 2) {
+                System.out.println(q);
+            }
+        }
 
-        Exam midterm = new Exam("Midterm Test", 3);
+        Question found = findQuestionById(questions, 2);
+        System.out.println("\nSearch result: " + found);
 
-        takeExam(S1, questions, scanner);
-        takeExam(S2, questions, scanner);
+        Candidate s1 = new Candidate(1, "Asanali");
+        Candidate s2 = new Candidate(2, "Farabi");
 
-        System.out.println("\nRESULTS:");
-        printResult(S1, midterm);
-        printResult(S2, midterm);
+        Exam exam = new Exam("Midterm", 3);
+
+        takeExam(s1, questions, scanner);
+        takeExam(s2, questions, scanner);
+
+        printResult(s1, exam);
+        printResult(s2, exam);
 
         scanner.close();
     }
 
-    public static void takeExam(Candidate candidate, Question[] questions, Scanner scanner) {
-
-        System.out.println("\nCandidate: " + candidate.fullName);
+    public static void takeExam(Candidate c, ArrayList<Question> questions, Scanner scanner) {
+        System.out.println("\nCandidate: " + c.getFullName());
 
         for (Question q : questions) {
             System.out.println(q.getText());
-            System.out.print("Your answer: ");
-            String answer = scanner.nextLine();
+            System.out.print("Answer: ");
+            String ans = scanner.nextLine();
 
-            if (q.isCorrect(answer)) {
-                candidate.addPoints(q.getScoreValue());
-                System.out.println("Correct! +" + q.getScoreValue());
+            if (q.isCorrect(ans)) {
+                c.addPoints(q.getScoreValue());
+                System.out.println("Correct!");
             } else {
                 System.out.println("Wrong!");
             }
         }
     }
 
-    public static void printResult(Candidate candidate, Exam exam) {
+    public static void printResult(Candidate c, Exam exam) {
+        System.out.println(c);
+        System.out.println(
+                exam.checkResult(c.getTotalScore())
+                        ? "PASSED"
+                        : "FAILED"
+        );
+    }
 
-        System.out.println(candidate.fullName + " score: " + candidate.getTotalScore());
-
-        if (exam.checkResult(candidate.getTotalScore())) {
-            System.out.println(candidate.fullName + " passed the exam");
-        } else {
-            System.out.println(candidate.fullName + " failed the exam");
+    public static Question findQuestionById(ArrayList<Question> list, int id) {
+        for (Question q : list) {
+            if (q.id == id) return q;
         }
+        return null;
     }
 }

@@ -4,13 +4,12 @@ import java.util.Objects;
 
 public class Candidate {
     private int id;
-    public String fullName;
+    private String fullName;
     private int totalScore;
 
     public Candidate(int id, String fullName) {
         this.id = id;
         this.fullName = fullName;
-        this.totalScore = 0;
     }
 
     public void addPoints(int points) {
@@ -21,21 +20,21 @@ public class Candidate {
         return totalScore;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
     @Override
     public String toString() {
-        return "Candidate{" +
-                "id=" + id +
-                ", name='" + fullName + '\'' +
-                ", score=" + totalScore +
-                '}';
+        return fullName + " score=" + totalScore;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Candidate)) return false;
-        Candidate that = (Candidate) o;
-        return id == that.id;
+        Candidate c = (Candidate) o;
+        return id == c.id;
     }
 
     @Override
