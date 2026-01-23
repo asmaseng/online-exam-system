@@ -8,10 +8,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Question> questions = new ArrayList<>();
-        questions.add(new TextQuestion(1, "5 + 3 = ?", "8", 3));
-        questions.add(new TextQuestion(2, "Java is OOP language? (yes/no)", "yes", 2));
-        questions.add(new TextQuestion(3, "2 * 2 = ?", "4", 1));
+        ArrayList<Question> questions = QuestionDAO.getAllQuestions();
 
         questions.sort(Comparator.comparingInt(Question::getScoreValue));
 
@@ -25,8 +22,11 @@ public class Main {
         Question found = findQuestionById(questions, 2);
         System.out.println("\nSearch result: " + found);
 
-        Candidate s1 = new Candidate(1, "Asanali");
-        Candidate s2 = new Candidate(2, "Farabi");
+        int id1 = CandidateDAO.addCandidate("Asanali");
+        int id2 = CandidateDAO.addCandidate("Farabi");
+
+        Candidate s1 = new Candidate(id1, "Asanali");
+        Candidate s2 = new Candidate(id2, "Farabi");
 
         Exam exam = new Exam("Midterm", 3);
 
@@ -35,6 +35,10 @@ public class Main {
 
         printResult(s1, exam);
         printResult(s2, exam);
+
+        CandidateDAO.updateScore(s1.getId(), s1.getTotalScore());
+        CandidateDAO.updateScore(s2.getId(), s2.getTotalScore());
+
 
         scanner.close();
     }
